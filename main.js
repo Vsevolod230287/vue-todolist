@@ -22,7 +22,11 @@ var app = new Vue({
 
   },
   computed: {
-
+    todosComputed: function() {
+      let todosDone = this.todos.filter((todo) => todo.status == 'done');
+      let todosTodo = this.todos.filter((todo) => todo.status == 'todo');
+      return [...todosTodo,...todosDone ]
+    }
   },
   methods: {
     inserisci: function() {
@@ -36,16 +40,19 @@ var app = new Vue({
         this.inputTxt = ''
       }
     },
-    barare: function (i) {
-    this.todos[i].status = 'done'
-  },
-  remove: function (i) {
-   this.todos.splice(i, 1)
- },
- edit: function (todo, i) {
-  this.inputTxt = todo.title
-  this.remove(i);
- }
+    barare: function(todo) {
+      let index = this.todos.indexOf(todo);
+      this.todos[index].status = 'done';
+    },
+    remove: function(todo) {
+      let index = this.todos.indexOf(todo);
+      this.todos.splice(index, 1);
+    },
+    edit: function(todo) {
+      this.inputTxt = todo.title
+
+      this.remove(todo);
+    }
 
   }
 
