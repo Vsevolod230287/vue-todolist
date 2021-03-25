@@ -28,7 +28,8 @@ var app = new Vue({
     inserisci: function() {
       if (this.inputTxt != '') {
         let obj = {
-          title: this.inputTxt
+          title: this.inputTxt,
+          status: 'todo'
         }
 
         this.todos.push(obj);
@@ -37,7 +38,10 @@ var app = new Vue({
     },
     barare: function (i) {
     this.todos[i].status = 'done'
-    }
+  },
+  remove: function (todo, i) {
+   this.todos.splice(i, 1)
+  }
 
   }
 

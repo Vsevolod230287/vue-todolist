@@ -18,8 +18,9 @@
         <li v-for="(todo, i) in todos">
           <span class="title" :class="(todo.status == 'done' ? 'barrato' : '')">{{todo.title}}</span>
           <div class="controls">
-            <span class="check" @click="barare(i)"><i class="fas fa-check"></i></span>
-            <span class="edit"><i class="fas fa-edit"></i></span>
+            <span class="check" @click="barare(i)" v-if="todo.status != 'done'"><i class="fas fa-check"></i></span>
+            <span class="edit"><i class="fas fa-edit" v-if="todo.status != 'done'"></i></span>
+            <span class="cancel"><i class="fas fa-trash" v-if="todo.status == 'done'" @click="remove(todo, i)"></i></span>
           </div>
         </li>
       </ul>
