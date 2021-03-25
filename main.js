@@ -39,9 +39,13 @@ var app = new Vue({
     barare: function (i) {
     this.todos[i].status = 'done'
   },
-  remove: function (todo, i) {
+  remove: function (i) {
    this.todos.splice(i, 1)
-  }
+ },
+ edit: function (todo, i) {
+  this.inputTxt = todo.title
+  this.remove(i);
+ }
 
   }
 
