@@ -6,26 +6,14 @@ var app = new Vue({
   data: {
     inputTxt: '',
 
-    todos: [{
-        title: 'Fare la spesa',
-        status: 'todo'
-      },
-      {
-        title: 'Fare una chiamata',
-        status: 'todo'
-      },
-      {
-        title: 'Fare i compiti',
-        status: 'todo'
-      }
-    ]
+    todos: []
 
   },
   computed: {
     todosComputed: function() {
       let todosDone = this.todos.filter((todo) => todo.status == 'done');
       let todosTodo = this.todos.filter((todo) => todo.status == 'todo');
-      return [...todosTodo,...todosDone ]
+      return [...todosTodo, ...todosDone]
     }
   },
   methods: {
@@ -54,6 +42,8 @@ var app = new Vue({
       this.remove(todo);
     }
 
+
   }
+
 
 })

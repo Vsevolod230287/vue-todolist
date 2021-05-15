@@ -16,14 +16,26 @@
       <h1>Lista ToDo</h1>
       <ul>
         <li v-for="todo in todosComputed">
-          <span class="title" :class="(todo.status == 'done' ? 'barrato' : '')">{{todo.title}}</span>
+          <span class="title" :class="todo.status == 'done' ? 'barrato' : '' ">
+            {{ todo.title }}
+          </span>
+
           <div class="controls">
-            <span class="check" @click="barare(todo)" v-if="todo.status != 'done'"><i class="fas fa-check"></i></span>
-            <span class="edit"><i class="fas fa-edit" v-if="todo.status != 'done'" @click="edit(todo)"></i></span>
-            <span class="cancel"><i class="fas fa-trash" v-if="todo.status == 'done'" @click="remove(todo)"></i></span>
+            <span class="check" title="Segna come fatto!" @click="barare(todo)" v-if="todo.status != 'done'">
+              <i class="fas fa-check"></i>
+            </span>
+
+            <span class="edit" title="Modifica">
+              <i class="fas fa-edit" v-if="todo.status != 'done'" @click="edit(todo)"></i>
+            </span>
+
+            <span class="cancel" title="Elimina">
+              <i class="fas fa-trash" v-if="todo.status == 'done'" @click="remove(todo)"></i>
+            </span>
           </div>
         </li>
       </ul>
+
       <input type="text" name="" v-model="inputTxt" placeholder="Inserisci ToDo!" @keyup.enter="inserisci">
       <button type="button" name="button" @click="inserisci">Inserisci</button>
     </div>
