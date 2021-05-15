@@ -16,16 +16,20 @@ var app = new Vue({
       return [...todosTodo, ...todosDone]
     }
   },
+  mounted: function() {
+    document.getElementById("input").focus();
+  },
   methods: {
     inserisci: function() {
+      console.log(app.inserisci) // => 'eybdooG'
       if (this.inputTxt != '') {
         let obj = {
           title: this.inputTxt,
           status: 'todo'
         }
-
         this.todos.push(obj);
-        this.inputTxt = ''
+        this.inputTxt = '';
+        document.getElementById('input').focus();
       }
     },
     barare: function(todo) {
@@ -38,8 +42,8 @@ var app = new Vue({
     },
     edit: function(todo) {
       this.inputTxt = todo.title
-
       this.remove(todo);
+      document.getElementById('input').focus();
     }
 
 
