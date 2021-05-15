@@ -18,6 +18,7 @@
       <button type="button" name="button" @click="inserisci">Inserisci</button>
       <ul>
         <li v-for="todo in todosComputed">
+
           <span class="title" :class="todo.status == 'done' ? 'barrato' : '' ">
             {{ todo.title }}
           </span>
@@ -35,6 +36,7 @@
               <i class="fas fa-trash" v-if="todo.status == 'done'" @click="remove(todo)"></i>
             </span>
           </div>
+
         </li>
       </ul>
 
